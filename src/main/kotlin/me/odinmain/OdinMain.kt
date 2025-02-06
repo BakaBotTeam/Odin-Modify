@@ -20,7 +20,6 @@ import me.odinmain.utils.render.HighlightRenderer
 import me.odinmain.utils.render.RenderUtils
 import me.odinmain.utils.render.RenderUtils2D
 import me.odinmain.utils.render.Renderer
-import me.odinmain.utils.sendDataToServer
 import me.odinmain.utils.skyblock.KuudraUtils
 import me.odinmain.utils.skyblock.LocationUtils
 import me.odinmain.utils.skyblock.PlayerUtils
@@ -61,7 +60,6 @@ object OdinMain {
 
         CommandRegistry.register()
         OdinFont.init()
-        scope.launch(Dispatchers.IO) { DevPlayers.preloadCapes() }
     }
 
     fun postInit() {
@@ -79,11 +77,6 @@ object OdinMain {
         }
         ClickGUI.init()
         RoundedRect.initShaders()
-
-        val name = mc.session?.username?.takeIf { !it.matches(Regex("Player\\d{2,3}")) } ?: return
-        scope.launch(Dispatchers.IO) {
-            sendDataToServer(body = """{"username": "$name", "version": "${if (isLegitVersion) "legit" else "cheater"} $VERSION"}""")
-        }
     }
 
     fun onTick() {

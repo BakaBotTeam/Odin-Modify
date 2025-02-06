@@ -42,7 +42,8 @@ tasks {
             "MixinConfigs" to "mixins.odinclient.json",
             "ModSide" to "CLIENT",
             "TweakClass" to "gg.essential.loader.stage0.EssentialSetupTweaker",
-            "TweakOrder" to "0"
+            "TweakOrder" to "0",
+            "FMLCorePlugin" to "me.odinclient.ASMPlugin"
         )
         dependsOn(shadowJar)
         enabled = false

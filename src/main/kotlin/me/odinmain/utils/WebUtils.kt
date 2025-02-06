@@ -1,84 +1,14 @@
 package me.odinmain.utils
 
 import com.google.gson.JsonParser
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 import me.odinmain.OdinMain.logger
-import me.odinmain.features.impl.render.DevPlayers
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.net.HttpURLConnection
 import java.net.URL
-
-/**
- * Sends a POST request to a specified server URL with the provided request body.
- *
- * @param body The content of the request body to be sent to the server.
- * @param url The URL of the server to which the request will be sent. Defaults to a predefined URL.
- *
- * @returns The response code from the server (can be used as a bad get request)
- */
-suspend fun sendDataToServer(body: String, url: String = "https://gi2wsqbyse6tnfhqakbnq6f2su0vujgz.lambda-url.eu-north-1.on.aws/"): String = withTimeoutOrNull(5000) {
-    return@withTimeoutOrNull try {
-        val connection = withContext(Dispatchers.IO) {
-            URL(url).openConnection()
-        } as HttpURLConnection
-        connection.requestMethod = "POST"
-        connection.doOutput = true
-
-        val writer = OutputStreamWriter(connection.outputStream)
-        withContext(Dispatchers.IO) {
-            writer.write(body)
-        }
-        withContext(Dispatchers.IO) {
-            writer.flush()
-        }
-
-        val responseCode = connection.responseCode
-        if (DevPlayers.isDev) println("Response Code: $responseCode")
-
-        val inputStream = connection.inputStream
-        val response = inputStream.bufferedReader().use { it.readText() }
-        if (DevPlayers.isDev) println("Response: $response")
-
-        connection.disconnect()
-
-        response
-    } catch (_: Exception) { "" }
-} ?: ""
-
-/**
- * Fetches data from a specified URL and returns it as a string.
- *
- * @param url The URL from which to fetch data.
- * @return A string containing the data fetched from the URL, or an empty string in case of an exception.
- */
-suspend fun getDataFromServer(url: String): String {
-    return withTimeoutOrNull(10000) {
-        try {
-            val connection = withContext(Dispatchers.IO) {
-                URL(url).openConnection()
-            } as HttpURLConnection
-            connection.requestMethod = "GET"
-
-            val responseCode = connection.responseCode
-            if (DevPlayers.isDev) println("Response Code: $responseCode")
-            if (responseCode != 200) return@withTimeoutOrNull ""
-            val inputStream = connection.inputStream
-            val response = inputStream.bufferedReader().use { it.readText() }
-            if (DevPlayers.isDev) println("Response: $response")
-
-            connection.disconnect()
-
-            response
-        } catch (_: Exception) { "" }
-    } ?: ""
-}
 
 /**
  * Fetches data from a specified URL and returns it as a string.

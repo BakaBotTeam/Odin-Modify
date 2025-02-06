@@ -1,5 +1,5 @@
 <h1 align = "center">
-	Odin
+	Odin-Modify
 </h1>
 
 <div align="center">
@@ -8,7 +8,7 @@
 [![downloads](https://img.shields.io/github/downloads/odtheking/Odin/total?style=for-the-badge)](https://github.com/odtheking/Odin)
 [![version](https://img.shields.io/github/v/release/odtheking/Odin?include_prereleases&style=for-the-badge)](https://github.com/odtheking/Odin/releases)
 </div>
-Odin is a forge mod for Hypixel Skyblock on the minecraft version 1.8.9. The mod specializes in Kuudra & Dungeons and offers a bunch of additional features for all parts of Hypixel Skyblock. The mod is also designed to be as lightweight as possible to ensure that it does not impact the game's performance.
+Odin-Modify is a forge mod for Hypixel Skyblock on the minecraft version 1.8.9. The mod specializes in Kuudra & Dungeons and offers a bunch of additional features for all parts of Hypixel Skyblock. The mod is also designed to be as lightweight as possible to ensure that it does not impact the game's performance.
 
 The mod contains two versions which are two separate builds. Using Gradle MultiProject functionality enables us to develop two separate versions of the mod within the same repository while keeping the unique additions to each version separate. If you have any questions regarding the mod, please feel free to ask in the Discord server.
 
@@ -20,3 +20,6 @@ We have an installation guide which you can access by clicking [here](https://od
 Suggestions and bug reports are welcome, please use the [Discord](https://discord.gg/2nCbC9hkxT) for that.
 
 For an organized feature list, check the website [here](https://odtheking.github.io/Odin/feature_list_legit).
+
+## Modifications
+* This fork version of Odin is a modified version to add some features that are not available in the original version, and bring better farming experience.

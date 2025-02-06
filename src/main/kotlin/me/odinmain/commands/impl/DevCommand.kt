@@ -14,10 +14,8 @@ import me.odinmain.features.impl.floor7.WitherDragonState
 import me.odinmain.features.impl.floor7.WitherDragons.priorityDragon
 import me.odinmain.features.impl.floor7.WitherDragonsEnum
 import me.odinmain.features.impl.nether.NoPre
-import me.odinmain.features.impl.render.DevPlayers.updateDevs
 import me.odinmain.utils.isOtherPlayer
 import me.odinmain.utils.postAndCatch
-import me.odinmain.utils.sendDataToServer
 import me.odinmain.utils.skyblock.*
 import me.odinmain.utils.skyblock.dungeon.Blessing
 import me.odinmain.utils.skyblock.dungeon.DungeonUtils
@@ -82,17 +80,6 @@ val devCommand = Commodore("oddev") {
 
     literal("giveaotv").runs {
         sendCommand("give @p minecraft:diamond_shovel 1 0 {ExtraAttributes:{ethermerge:1b}}")
-    }
-
-    literal("updatedevs").runs {
-       updateDevs()
-    }
-
-    literal("adddev").runs { name: String, password: String ->
-        modMessage("Sending data... name: $name, password: $password")
-        scope.launch {
-            modMessage(sendDataToServer("$name, [1,2,3], [1,2,3], true, $password", "https://tj4yzotqjuanubvfcrfo7h5qlq0opcyk.lambda-url.eu-north-1.on.aws/"))
-        }
     }
 
     literal("dunginfo").runs {

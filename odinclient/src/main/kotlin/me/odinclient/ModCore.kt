@@ -38,6 +38,7 @@ class ModCore {
 
         OdinMain.init()
         MinecraftForge.EVENT_BUS.register(this)
+        MinecraftForge.EVENT_BUS.register(RotationManager)
     }
 
     @EventHandler
@@ -52,7 +53,8 @@ class ModCore {
             HoverTerms, LightsDevice, SimonSays, ArrowsDevice, FuckDiorite, RelicAura,
             Trajectories, Ghosts, NoDebuff, ChocolateFactory, AutoExperiments, AutoHarp,
             FarmingHitboxes, NoBlock, AutoClicker, Triggerbot, GhostBlocks, FreezeGame, EtherWarpHelper, ChestEsp,
-            EscrowFix, TerminalAura, AutoTerms, Camera, DungeonAbilities, QueueTerms, HidePlayers
+            EscrowFix, TerminalAura, AutoTerms, Camera, DungeonAbilities, QueueTerms, HidePlayers, NoBreakEffect,
+            FastFarming, AutoPlant
         )
         OdinMain.loadComplete()
     }
